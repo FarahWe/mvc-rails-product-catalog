@@ -1,16 +1,14 @@
 class ProductsController < ApplicationController
-  before_action :set_product, only: [:show, :update, :destroy]
+  before_action :set_product, only: [:show, :update, :destroy, :edit]
 
   # GET /products
   def index
     @products = Product.all
-
-    # render json: @products
   end
 
   # GET /products/1
   def show
-    render json: @product
+    @product
   end
 
   # POST 
@@ -19,7 +17,7 @@ class ProductsController < ApplicationController
 
     product.save!
 
-    render json: product
+    redirect_to products_path
   end
 
   def update
@@ -28,10 +26,20 @@ class ProductsController < ApplicationController
     @product.price = product_params['price']
 
     @product.save!
+    redirect_to products_path
+  end
+
+  def edit
   end
 
   def destroy
     @product.destroy
+
+    redirect_to products_path
+  end
+
+  def new
+    @product = Product.new
   end
 
   private
