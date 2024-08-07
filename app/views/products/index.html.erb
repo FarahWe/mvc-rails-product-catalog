@@ -16,7 +16,7 @@
         <td><%= product.description %></td>
         <td><%= product.price %></td>
         <td>
-          <%= link_to "Excluir", products_path(product), method: :delete %></td>
+          <%= link_to "Excluir", products_path(product), method: :delete, data: { turbolinks: false } %></td>
         </td>
       </tr>
     <% end %>
